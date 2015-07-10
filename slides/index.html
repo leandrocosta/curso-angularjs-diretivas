@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+
+		<title>AngularJS - Diretivas</title>
+
+		<meta name="description" content="Curso de Introdução ao AngularJS - Diretivas">
+		<meta name="author" content="Leandro Costa">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+		  p.smalltext {
+		    font-size:50%;
+		  }
+		</style>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>AngularJS</h1>
+					<h3>Diretivas</h3>
+					<p>
+						<small>Leandro Costa <leandro.costa@almg.gov.br></small>
+					</p>
+				</section>
+
+        <section>
+					<blockquote cite="https://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/">
+						&ldquo;AngularJS Directive is what we have close to <a href="http://www.polymer-project.org/">Web Components</a>
+						at this time and is the most crucial and difficult piece in AngularJS.&rdquo; -- Amit Gharat (@codef0rmer)
+					</blockquote>
+        </section>
+
+        <section>
+          <blockquote cite="http://www.sitepoint.com/practical-guide-angularjs-directives/">
+            &ldquo;Directives are the most important components of any AngularJS application.&rdquo; -- Sandeep Panda (@sandeepg33k)
+          </blockquote>
+        </section>
+
+        <section>
+          <h2>What are Directives?</h2>
+          <blockquote cite="https://docs.angularjs.org/guide/directive">
+            At a high level, directives are <strong>markers</strong> on a DOM element (such as an attribute, element name, comment or CSS class)
+            that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element or even transform
+            the DOM element and its children.
+          </blockquote>
+          <a href="https://docs.angularjs.org/guide/directive"><p class="smalltext">Guide to AngularJS Documentation</p></a>
+        </section>
+
+        <section>
+          <section>
+            <p>jQuery UI Datepicker</p>
+            <pre><code data-trim>
+&lt;body&gt;
+  &lt;input type="text"&gt;
+ 
+  &lt;script&gt;
+    $(function() {
+      $("input").datepicker();
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+              </code></pre>
+          </section>
+
+          <section>
+            <p>Demo jQuery UI Datepicker</p>
+            <a class="jsbin-embed" href="http://jsbin.com/vukuzo/10/embed?html,output&height=320px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+            <a href="https://jqueryui.com/datepicker"><p class="smalltext">https://jqueryui.com/datepicker</p></a>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <p>Angular Datepicker</p>
+            <pre><code data-trim>
+&lt;body&gt;
+  &lt;datepicker>
+    &lt;input ng-model="date" type="text"/&gt;
+  &lt;/datepicker&gt;
+  
+  &lt;script&gt;
+    (function() {
+      angular.module('myApp', ['720kb.datepicker']);
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+          </section>
+          <section>
+            <p>Demo Angular Datepicker</p>
+            <a class="jsbin-embed" href="http://jsbin.com/vulibe/9/embed?html,output&height=420px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+            <a href="https://github.com/720kb/angular-datepicker"><p class="smalltext">https://github.com/720kb/angular-datepicker</p></a>
+          </section>
+        </section>
+
+        <section>
+            <div>
+              <pre><code>
+&lt;body&gt;
+  &lt;input type="text"&gt;
+ 
+  &lt;script&gt;
+    $(function() {
+      $("input").datepicker();
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+              </code></pre>
+            </div>
+            <div>
+              <pre><code>
+&lt;body&gt;
+  &lt;datepicker>
+    &lt;input ng-model="date" type="text"/&gt;
+  &lt;/datepicker&gt;
+  
+  &lt;script&gt;
+    (function() {
+      angular.module('myApp', ['720kb.datepicker']);
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+              </code></pre>
+            </div>
+        </section>
+
+        <section>
+          <a href="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html"><p>How I've Improved My Angular Apps by Banning ng-controller</p></a>
+
+          <blockquote cite="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html">
+            &ldquo;I've recently come to a realization that using standalone controllers, as with ng-controller, rarely leads to an optimal design.&rdquo;
+          </blockquote>
+          
+          <blockquote cite="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html">
+            &ldquo;I've talked with several people who have said they don't use ng-controller at all in their apps, and just use directives instead.&rdquo;
+          </blockquote>
+
+          <p class="smalltext">Tero Parviainen (@teropa)</p>
+        </section>
+
+        <section>
+          <p>Problemas com <i>ng-controller</i></p>
+          <ul>
+            <li>Herança (<i>the "dot rule"</i>)</li>
+            <li>Dados semi-globais (<i>controller as</i>)</li>
+            <li>Organização visual fraca</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <p>The "dot rule"</p>
+          </section>
+
+          <section>
+            <p>The "dot rule"</p>
+            <a class="jsbin-embed" href="http://jsbin.com/cimoqe/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+            <a href="https://egghead.io/lessons/angularjs-the-dot"><p class="smalltext">https://egghead.io/lessons/angularjs-the-dot</p></a>          
+          </section>
+
+          <section>
+            <p>The "dot rule"</p>
+            <a class="jsbin-embed" href="http://jsbin.com/diyuru/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+            <a href="https://egghead.io/lessons/angularjs-the-dot"><p class="smalltext">https://egghead.io/lessons/angularjs-the-dot</p></a>          
+          </section>
+        </section>
+
+        <section>
+          <p>Directive Definition Object</p>
+          <pre><code style="font-size:58%;line-height:normal;">
+myModule.directive('directiveName', function factory(injectables) {
+  return {
+    priority: 0,
+    template: '&lt;div&gt;&lt;/div&gt;' /* or function(tElement, tAttrs) { ... } */, // or
+    templateUrl: 'directive.html' /* or function(tElement, tAttrs) { ... } */,
+    transclude: false,
+    restrict: 'A',
+    templateNamespace: 'html',
+    scope: false,
+    controller: function($scope, $element, $attrs, $transclude, otherInjectables) { ... },
+    controllerAs: 'stringIdentifier',
+    bindToController: false,
+    require: 'siblingDirectiveName' /* or ['^parentDirectiveName', '?optionalDirectiveName', '?^optionalParent'] */,
+    compile: function compile(tElement, tAttrs, transclude) {
+      return {
+        pre: function preLink(scope, iElement, iAttrs, controller) { ... },
+        post: function postLink(scope, iElement, iAttrs, controller) { ... }
+      } /* or return function postLink( ... ) { ... } */;
+    }, // or
+    link: {
+      pre: function preLink(scope, iElement, iAttrs, controller) { ... },
+      post: function postLink(scope, iElement, iAttrs, controller) { ... }
+    } /* or link: function postLink( ... ) { ... } */
+  };
+});
+          </code></pre>
+          <a href="https://docs.angularjs.org/api/ng/service/$compile#directive-definition-object"><p class="smalltext">Guide to AngularJS Documentation</p></a>
+        </section>
+
+        <section>
+          <section>
+            <p>camelCase / snake-case (x-, data-)</p>
+            <pre><code>
+&lt;body&gt;
+  &lt;my-directive&gt;&lt;/my-directive&gt;
+  &lt;x-my-directive&gt;&lt;/x-my-directive&gt;
+  &lt;data-my-directive&gt;&lt;/data-my-directive&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function() {
+          return {
+            template:'&lt;p&gt;Olá mundo!&lt;/p&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <p>camelCase / snake-case (x-, data-)</p>
+            <a class="jsbin-embed" href="http://jsbin.com/rupora/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+          </section>
+        </section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				width:1200,
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
