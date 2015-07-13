@@ -13,6 +13,8 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
+    <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">-->
+
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
@@ -35,6 +37,10 @@
 		<style>
 		  p.smalltext {
 		    font-size:50%;
+		  }
+		  .code-size-80 {
+		    font-size:80%;
+		    line-height:normal;
 		  }
 		</style>
 	</head>
@@ -71,7 +77,9 @@
             that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element or even transform
             the DOM element and its children.
           </blockquote>
-          <a href="https://docs.angularjs.org/guide/directive"><p class="smalltext">Guide to AngularJS Documentation</p></a>
+          <p class="smalltext">
+            <a href="https://docs.angularjs.org/guide/directive">Guide to AngularJS Documentation</a>
+          </p>
         </section>
 
         <section>
@@ -88,13 +96,14 @@
   &lt;/script&gt;
 &lt;/body&gt;
               </code></pre>
+              <a target="blank" href="http://jsbin.com/vukuzo/edit">http://jsbin.com/vukuzo</a>
           </section>
 
-          <section>
+          <!--<section>
             <p>Demo jQuery UI Datepicker</p>
             <a class="jsbin-embed" href="http://jsbin.com/vukuzo/10/embed?html,output&height=320px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
             <a href="https://jqueryui.com/datepicker"><p class="smalltext">https://jqueryui.com/datepicker</p></a>
-          </section>
+          </section>-->
         </section>
 
         <section>
@@ -113,12 +122,14 @@
   &lt;/script&gt;
 &lt;/body&gt;
             </code></pre>
+            <a target="blank" href="http://jsbin.com/vulibe/edit">http://jsbin.com/vulibe</a>
           </section>
-          <section>
+         
+          <!--<section>
             <p>Demo Angular Datepicker</p>
             <a class="jsbin-embed" href="http://jsbin.com/vulibe/9/embed?html,output&height=420px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
             <a href="https://github.com/720kb/angular-datepicker"><p class="smalltext">https://github.com/720kb/angular-datepicker</p></a>
-          </section>
+          </section>-->
         </section>
 
         <section>
@@ -178,9 +189,14 @@
         <section>
           <section>
             <p>The "dot rule"</p>
+            <p><a target="blank" href="http://jsbin.com/cimoqe/edit">http://jsbin.com/cimoqe</a></p>
+            <p><a target="blank" href="http://jsbin.com/diyuru/edit">http://jsbin.com/diyuru</a></p>
+            <p class="smalltext">
+              <a target="blank" href="https://egghead.io/lessons/angularjs-the-dot">https://egghead.io/lessons/angularjs-the-dot</a>
+            </p>
           </section>
 
-          <section>
+          <!--<section>
             <p>The "dot rule"</p>
             <a class="jsbin-embed" href="http://jsbin.com/cimoqe/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
             <a href="https://egghead.io/lessons/angularjs-the-dot"><p class="smalltext">https://egghead.io/lessons/angularjs-the-dot</p></a>          
@@ -190,12 +206,83 @@
             <p>The "dot rule"</p>
             <a class="jsbin-embed" href="http://jsbin.com/diyuru/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
             <a href="https://egghead.io/lessons/angularjs-the-dot"><p class="smalltext">https://egghead.io/lessons/angularjs-the-dot</p></a>          
-          </section>
+          </section>-->
         </section>
 
         <section>
-          <p>Directive Definition Object</p>
-          <pre><code style="font-size:58%;line-height:normal;">
+          <section>
+            <p>Declaração</p>
+            <pre><code>
+&lt;body&gt;
+  &lt;my-directive&gt;&lt;/my-directive&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function() {
+          return {
+            template:'&lt;p&gt;Olá mundo!&lt;/p&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/witehe/edit">http://jsbin.com/witehe</a>
+          </section>
+
+          <section>
+            <p>Declaração</p>
+            <pre><code>
+&lt;body&gt;
+  &lt;my-directive&gt;&lt;/my-directive&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function($log) {
+          return function(scope, elem, attrs) {
+            $log.info('myDirective');
+          }
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/dudovi/edit">http://jsbin.com/dudovi</a>
+          </section>
+
+          <section>
+            <p>Declaração</p>
+            <pre><code style="font-size:70%;line-height:normal;">
+&lt;body&gt;
+  &lt;my-directive&gt;&lt;/my-directive&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', myDirective);
+
+      myDirective.$inject = ['$log'];
+
+      function myDirective($log) {
+        return {
+          template:'Olá mundo!',
+          link: function(scope, elem, attrs) {
+            $log.info('myDirective link');
+          }
+        }
+      }
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre> 
+            <a target="blank" href="http://jsbin.com/jopaga/edit">http://jsbin.com/jopaga</a>
+          </section>
+
+          <section>
+            <p>Directive Definition Object</p>
+            <pre><code style="font-size:58%;line-height:normal;">
 myModule.directive('directiveName', function factory(injectables) {
   return {
     priority: 0,
@@ -221,14 +308,17 @@ myModule.directive('directiveName', function factory(injectables) {
     } /* or link: function postLink( ... ) { ... } */
   };
 });
-          </code></pre>
-          <a href="https://docs.angularjs.org/api/ng/service/$compile#directive-definition-object"><p class="smalltext">Guide to AngularJS Documentation</p></a>
+            </code></pre>
+            <p class="smalltext">
+              <a href="https://docs.angularjs.org/api/ng/service/$compile#directive-definition-object">Guide to AngularJS Documentation</a>
+            </p>
+          </section>
         </section>
 
         <section>
           <section>
             <p>camelCase / snake-case (x-, data-)</p>
-            <pre><code>
+            <pre><code style="font-size:80%;line-height:normal;">
 &lt;body&gt;
   &lt;my:directive&gt;&lt;/my:directive&gt;
   &lt;my_directive&gt;&lt;/my_directive&gt;
@@ -248,19 +338,237 @@ myModule.directive('directiveName', function factory(injectables) {
   &lt;/script&gt;
 &lt;/body&gt;
             </code></pre>
+            <a target="blank" href="http://jsbin.com/rupora/edit">http://jsbin.com/rupora</a>
+          </section>
+
+          <!--<section>
+            <p>camelCase / snake-case (x-, data-)</p>
+            <a class="jsbin-embed" href="http://jsbin.com/rupora/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+          </section>-->
+          
+          <section>
+            <p>The normalization process is as follows:</p>
+            <ul>
+              <li>Strip x- and data- from the front of the element/attributes.</li>
+              <li>Convert the :, -, or _-delimited name to camelCase.</li>
+            </ul>
+            <p class="smalltext">
+              <a href="https://docs.angularjs.org/guide/directive">Guide to AngularJS Documentation</a>
+            </p>
           </section>
 
           <section>
-            <p>camelCase / snake-case (x-, data-)</p>
-            <a class="jsbin-embed" href="http://jsbin.com/rupora/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+            <blockquote cite="http://www.w3.org/TR/2011/WD-html5-20110525/elements.html#embedding-custom-non-visible-data-with-the-data-attributes">
+              A custom data attribute is an attribute in no namespace whose name starts with the string "data-", has at least one character after the hyphen,
+              is XML-compatible, and contains no characters in the range U+0041 to U+005A (LATIN CAPITAL LETTER A to LATIN CAPITAL LETTER Z).
+          </blockquote>
+
+          <p class="smalltext">
+            <a target="blank" href="http://www.w3.org/TR/2011/WD-html5-20110525/elements.html#embedding-custom-non-visible-data-with-the-data-attributes">W3C HTML5 - Embedding custom non-visible data with the data-* attributes</a>
+          </p>
+          </section>
+          
+          <section>
+            <blockquote cite="http://www.w3.org/html/wg/drafts/html/master/single-page.html">
+              Attribute names beginning with the two characters "x-" are reserved for user agent use and are guaranteed to never be formally added to the HTML language.
+              For flexibility, attributes names containing underscores (the U+005F LOW LINE character) are also reserved for experimental purposes and are guaranteed to
+              never be formally added to the HTML language.
+            </blockquote>
+            
+            <p class="smalltext">
+              <a target="blank" href="http://www.w3.org/html/wg/drafts/html/master/single-page.html">W3C HTML 5.1 - Extensibility</a>
+            </p>
           </section>
         </section>
 
         <section>
           <section>
             <p>restrict</p>
-            <a class="jsbin-embed" href="http://jsbin.com/hogubi/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
+
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      restrict: 'EA'
+      ...
+    };
+  });
+            </code></pre>
+
+            <ul>
+              <li>Elementos: 'E'</li>
+              <li>Atributos: 'A'</li>
+              <li>Classes: 'C'</li>
+              <li>Comentários: 'M'</li>
+              <li>Elementos e atributos: 'EA' (<i>default</i>)</li>
+            </ul>
           </section>
+          
+          <section>
+            <p>restrict</p>
+            <pre><code style="font-size:80%;line-height:normal;">
+&lt;body&gt;
+  E: &lt;my-directive&gt;&lt;/my-directive&gt;
+  A: &lt;div my-directive&gt;&lt;/div&gt;
+  C: &lt;div class="my-directive"&gt;&lt;/div&gt;
+  M: &lt;!-- directive: my-directive --&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function() {
+          return {
+            restrict: 'EACM',
+            template:'&lt;p&gt;Olá mundo!&lt;/p&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/hogubi/edit">http://jsbin.com/hogubi</a>
+            <!--<a class="jsbin-embed" href="http://jsbin.com/hogubi/embed?html,output&height=460px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>-->
+          </section>
+
+          <section>
+            <blockquote cite="https://github.com/johnpapa/angular-styleguide#style-y074">
+              When creating a directive that makes sense as a stand-alone element, allow restrict E (custom element) and optionally restrict A (custom attribute). Why?: It makes sense.
+            </blockquote>
+            <p class="smalltext">
+              <a target="blank" href="https://github.com/johnpapa/angular-styleguide#style-y074">Style Y074 - Restrict to Elements and Attributes</a>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <p>templateUrl</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      templateUrl:'url'
+      ...
+    };
+  });
+            </code></pre>
+          </section>
+          <section>
+            <p>templateUrl</p>
+            <pre><code style="font-size:80%;line-height:normal;">
+&lt;body&gt;
+  &lt;my-directive&gt;&lt;/my-directive&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function() {
+          return {
+            templateUrl:'my-directive.tpl.html'
+          };
+        });
+    })();
+  &lt;/script&gt;
+  
+  &lt;script type="text/ng-template" id="my-directive.tpl.html"&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/poraso/edit">http://jsbin.com/poraso</a>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <p>replace</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      replace: {boolean}
+      ...
+    };
+  });
+            </code></pre>
+          </section>
+
+          <section>
+            <p>replace: false</p>
+            <pre><code>
+&lt;body&gt;
+  &lt;my-directive&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/my-directive&gt;
+&lt;/body&gt;
+            </code></pre>
+            <p>replace: true</p>
+            <pre><code>
+&lt;body&gt;
+  &lt;p&gt;Olá mundo!&lt;/p&gt;
+&lt;/body&gt;
+            </code></pre>
+          </section>
+          <section>
+            <p>replace</p>
+            <pre><code style="font-size:95%;line-height:normal;">
+&lt;body&gt;
+  &lt;my-directive&gt;&lt;/my-directive&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function() {
+          return {
+            replace:true,
+            template:'&lt;p&gt;Olá mundo!&lt;/p&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/mosaqo/edit">http://jsbin.com/mosaqo</a>
+          </section>
+          
+          <section>
+            <blockquote cite="https://github.com/angular/angular.js/commit/eec6394a342fb92fba5270eee11c83f1d895e9fb">
+  						&ldquo;The `replace` flag for defining directives that replace the element that they are on will be removed in the next
+              major angular version. This feature has difficult semantics (e.g. how attributes are merged) and leads to more problems
+              compared to what it solves. Also, with WebComponents it is normal to have custom elements in the DOM.&rdquo;
+			  		</blockquote>
+				  	<p class="smalltext">
+              <a href="https://github.com/angular/angular.js/commit/eec6394a342fb92fba5270eee11c83f1d895e9fb">docs($compile): deprecate `replace` directives</a>
+            </p>
+          </section>
+        </section>
+        
+        <section>
+          <p>transclude</p>
+          <a target="blank" href="http://jsbin.com/papuvu/edit">http://jsbin.com/papuvu</a>
+        </section>
+        
+        <section>
+          <p>controller</p>
+          <a target="blank" href="http://jsbin.com/detuji/edit">http://jsbin.com/detuji</a>
+        </section>
+        
+        <section>
+          <p>link</p>
+          <a target="blank" href="http://jsbin.com/xuruzo/edit">http://jsbin.com/xuruzo</a>
+        </section>
+        
+        <section>
+          <p>restrict: comment</p>
+          <a target="blank" href="http://jsbin.com/kixiho/edit">http://jsbin.com/kixiho</a>
+        </section>
+        
+        <section>
+          <p>scope</p>
+          <a target="blank" href="http://jsbin.com/kimige/edit">http://jsbin.com/kimige</a>
         </section>
 			</div>
 		</div>
