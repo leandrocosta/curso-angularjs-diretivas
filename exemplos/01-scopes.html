@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="AngularJS Directives - scopes">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+</head>
+<body>
+  <div ng-init="mensagem='Olá mundo!'">
+    <p>Parent scope: {{mensagem}}</p>
+    <input type="text" ng-model="mensagem">
+    <ul>
+      <my-li-parent-scope></my-li-parent-scope>
+      <hr/>
+      <my-li-own-scope></my-li-own-scope>
+      <hr/>
+      <my-li-isolated-scope></my-li-isolated-scope>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      angular.module('myApp', [])
+        .directive('myLiParentScope', function() {
+          return {
+            scope:false,
+            templateUrl:'my-li.tpl.html',
+            controller: function($scope) {
+              $scope.label = 'my-li-parent-scope';
+            }
+          };
+        })
+        .directive('myLiOwnScope', function() {
+          return {
+            scope:true,
+            templateUrl:'my-li.tpl.html',
+            controller: function($scope) {
+              $scope.label = 'my-li-own-scope';
+            }
+          };
+        })
+        .directive('myLiIsolatedScope', function(){
+          return {
+            scope:{ },
+            templateUrl:'my-li.tpl.html',
+            controller:function($scope) {
+              $scope.label = 'my-li-isolated-scope';
+            }
+          }
+        });
+    })();
+  </script>
+
+  <script type="text/ng-template" id="my-li.tpl.html">
+    <p>{{label}}: {{mensagem}}</p>
+    <input type="text" ng-model="mensagem">
+  </script>
+</body>
+</html>

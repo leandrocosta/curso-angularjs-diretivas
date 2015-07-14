@@ -58,16 +58,18 @@
 				</section>
 
         <section>
-					<blockquote cite="https://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/">
-						&ldquo;AngularJS Directive is what we have close to <a href="http://www.polymer-project.org/">Web Components</a>
-						at this time and is the most crucial and difficult piece in AngularJS.&rdquo; -- Amit Gharat (@codef0rmer)
-					</blockquote>
-        </section>
+          <section>
+	  				<blockquote cite="https://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/">
+		  				&ldquo;AngularJS Directive is what we have close to <a href="http://www.polymer-project.org/">Web Components</a>
+			  			at this time and is the most crucial and difficult piece in AngularJS.&rdquo; -- Amit Gharat (@codef0rmer)
+				  	</blockquote>
+          </section>
 
-        <section>
-          <blockquote cite="http://www.sitepoint.com/practical-guide-angularjs-directives/">
-            &ldquo;Directives are the most important components of any AngularJS application.&rdquo; -- Sandeep Panda (@sandeepg33k)
-          </blockquote>
+          <section>
+            <blockquote cite="http://www.sitepoint.com/practical-guide-angularjs-directives/">
+              &ldquo;Directives are the most important components of any AngularJS application.&rdquo; -- Sandeep Panda (@sandeepg33k)
+            </blockquote>
+          </section>
         </section>
 
         <section>
@@ -104,9 +106,7 @@
             <a class="jsbin-embed" href="http://jsbin.com/vukuzo/10/embed?html,output&height=320px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
             <a href="https://jqueryui.com/datepicker"><p class="smalltext">https://jqueryui.com/datepicker</p></a>
           </section>-->
-        </section>
 
-        <section>
           <section>
             <p>Angular Datepicker</p>
             <pre><code data-trim>
@@ -130,9 +130,8 @@
             <a class="jsbin-embed" href="http://jsbin.com/vulibe/9/embed?html,output&height=420px">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.31.0"></script>
             <a href="https://github.com/720kb/angular-datepicker"><p class="smalltext">https://github.com/720kb/angular-datepicker</p></a>
           </section>-->
-        </section>
 
-        <section>
+          <section>
             <div>
               <pre><code>
 &lt;body&gt;
@@ -144,10 +143,10 @@
     });
   &lt;/script&gt;
 &lt;/body&gt;
-              </code></pre>
-            </div>
-            <div>
-              <pre><code>
+                </code></pre>
+              </div>
+              <div>
+                <pre><code>
 &lt;body&gt;
   &lt;datepicker>
     &lt;input ng-model="date" type="text"/&gt;
@@ -161,32 +160,33 @@
 &lt;/body&gt;
               </code></pre>
             </div>
+          </section>
         </section>
 
         <section>
-          <a href="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html"><p>How I've Improved My Angular Apps by Banning ng-controller</p></a>
+          <section>
+            <a href="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html"><p>How I've Improved My Angular Apps by Banning ng-controller</p></a>
 
-          <blockquote cite="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html">
-            &ldquo;I've recently come to a realization that using standalone controllers, as with ng-controller, rarely leads to an optimal design.&rdquo;
-          </blockquote>
+            <blockquote cite="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html">
+              &ldquo;I've recently come to a realization that using standalone controllers, as with ng-controller, rarely leads to an optimal design.&rdquo;
+            </blockquote>
           
-          <blockquote cite="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html">
-            &ldquo;I've talked with several people who have said they don't use ng-controller at all in their apps, and just use directives instead.&rdquo;
-          </blockquote>
+            <blockquote cite="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html">
+              &ldquo;I've talked with several people who have said they don't use ng-controller at all in their apps, and just use directives instead.&rdquo;
+            </blockquote>
 
-          <p class="smalltext">Tero Parviainen (@teropa)</p>
-        </section>
+            <p class="smalltext">Tero Parviainen (@teropa)</p>
+          </section>
 
-        <section>
-          <p>Problemas com <i>ng-controller</i></p>
-          <ul>
-            <li>Herança (<i>the "dot rule"</i>)</li>
-            <li>Dados semi-globais (<i>controller as</i>)</li>
-            <li>Organização visual fraca</li>
-          </ul>
-        </section>
+          <section>
+            <p>Problemas com <i>ng-controller</i></p>
+            <ul>
+              <li>Herança (<i>the "dot rule"</i>)</li>
+              <li>Dados semi-globais (<i>controller as</i>)</li>
+              <li>Organização visual fraca</li>
+            </ul>
+          </section>
 
-        <section>
           <section>
             <p>The "dot rule"</p>
             <p><a target="blank" href="http://jsbin.com/cimoqe/edit">http://jsbin.com/cimoqe</a></p>
@@ -489,7 +489,7 @@ angular.module('myApp', [])
   .directive('myDirective', function() {
     return {
       ...
-      replace: {boolean}
+      replace: {boolean},
       ...
     };
   });
@@ -545,10 +545,179 @@ angular.module('myApp', [])
             </p>
           </section>
         </section>
-        
+
         <section>
-          <p>transclude</p>
-          <a target="blank" href="http://jsbin.com/papuvu/edit">http://jsbin.com/papuvu</a>
+          <section>
+            <p>transclude</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      transclude: {boolean},
+      ...
+      template: "...<ng-transclude></ng-transclude>..."
+    };
+  });
+            </code></pre>
+          </section>
+          <section>
+            <p>transclude</p>
+            <pre><code style="font-size:80%;line-height:normal;">
+&lt;body&gt;
+  &lt;texto&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/texto&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('texto', function() {
+          return {
+            transclude:true,
+            template:'&lt;h3&gt;Título&lt;/h3&gt;&lt;ng-transclude&gt;&lt;/ng-transclude&gt;&lt;p&gt;Rodapé&lt;/p&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/papuvu/edit">http://jsbin.com/papuvu</a>
+          </section>
+
+          <section>
+            <p>transclude (atributo)</p>
+            <pre><code style="font-size:80%;line-height:normal;">
+&lt;body&gt;
+  &lt;texto&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/texto&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('texto', function() {
+          return {
+            transclude:true,
+            template:'&lt;h3&gt;Título&lt;/h3&gt;&lt;div ng-transclude&gt;ESTE TEXTO SERÁ SUBSTITUÍDO!&lt;/div&gt;&lt;p&gt;Rodapé&lt;/p&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/yepupi/edit">http://jsbin.com/yepupi</a>
+          </section>
+
+          <section>
+            <p>transclude (classe)</p>
+            <pre><code style="font-size:80%;line-height:normal;">
+&lt;body&gt;
+  &lt;texto&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/texto&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('texto', function() {
+          return {
+            transclude:true,
+            template:'&lt;h3&gt;Título&lt;/h3&gt;&lt;div class="ng-transclude"&gt;ESTE TEXTO SERÁ SUBSTITUÍDO!&lt;/div&gt;&lt;p&gt;Rodapé&lt;/p&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/lololi/edit">http://jsbin.com/lololi</a>
+          </section>
+
+          <section>
+            <p>transclude: true</p>
+            <pre><code>
+&lt;texto&gt;
+  &lt;ng-transclude&gt;
+    &lt;p class="ng-scope"&gt;Olá mundo!&lt;/p&gt;
+  &lt;/ng-transclude&gt;
+&lt;/texto&gt;
+            </code></pre>
+
+            <p>transclude: 'element'</p>
+            <pre><code>
+&lt;ng-transclude&gt;
+  &lt;texto class="ng-scope"&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/texto&gt;
+&lt;/ng-transclude&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <p>transclude: 'element'</p>
+            <pre><code style="font-size:80%;line-height:normal;">
+&lt;body&gt;
+  &lt;texto&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/texto&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('texto', function() {
+          return {
+            replace:true,
+            transclude:'element',
+            template:'&lt;div ng-transclude&gt;ESTE TEXTO SERÁ SUBSTITUÍDO!&lt;/div&gt;'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/fikogu/edit">http://jsbin.com/fikogu</a>
+          </section>
+          
+          <section>
+            <p><a target="blank" href="http://angular-tips.com/blog/2014/03/transclusion-and-scopes/">Angular Tips - Transclusion and Scopes (by Jesus Rodriguez)</a></p>
+            <pre><code style="font-size:55%;line-height:normal;">
+&lt;body ng-init="person={name:'John Doe'};header='Person'"&gt;
+  &lt;person header="header"&gt;
+    &lt;h2&gt;{{header}}&lt;/h2&gt;
+    &lt;p&gt;Hello, I am {{person.name}}&lt;/p&gt;
+  &lt;/person&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('person', function() {
+          return {
+            scope: { header: '=' },
+            transclude:true,
+            template: '&lt;div ng-transclude&gt;&lt;/div&gt;',
+            link: function(scope, element, attrs) {
+              scope.person = {
+                name: 'Directive Joe'
+              };
+
+              scope.header = 'Directive\'s header';
+            }
+          };
+      });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/turoje/edit">http://jsbin.com/turoje</a>
+          </section>
+          
+          <section data-background="white">
+            <img src="transclude-scope.png">
+            
+            <p class="smalltext">
+              <a href="https://thinkster.io/a-better-way-to-learn-angularjs/transclusion">Thinkster - A Better Way to Learn AngularJS</a>
+            </p>
+          </section>
         </section>
         
         <section>
@@ -567,7 +736,7 @@ angular.module('myApp', [])
         </section>
         
         <section>
-          <p>scope</p>
+          <p>scopes</p>
           <a target="blank" href="http://jsbin.com/kimige/edit">http://jsbin.com/kimige</a>
         </section>
 			</div>
