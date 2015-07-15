@@ -38,10 +38,13 @@
 		  p.smalltext {
 		    font-size:50%;
 		  }
-		  .code-size-80 {
-		    font-size:80%;
-		    line-height:normal;
-		  }
+		  pre .code-size-90 { font-size:90%;line-height:normal; }
+		  pre .code-size-80 { font-size:80%;line-height:normal; }
+		  pre .code-size-70 { font-size:70%;line-height:normal; }
+		  pre .code-size-65 { font-size:65%;line-height:normal; }
+		  pre .code-size-60 { font-size:60%;line-height:normal; }
+		  pre .code-size-55 { font-size:55%;line-height:normal; }
+		  pre .code-size-50 { font-size:50%;line-height:normal; }
 		</style>
 	</head>
 
@@ -80,7 +83,7 @@
             the DOM element and its children.
           </blockquote>
           <p class="smalltext">
-            <a href="https://docs.angularjs.org/guide/directive">Guide to AngularJS Documentation</a>
+            <a target="blank" href="https://docs.angularjs.org/guide/directive">Guide to AngularJS Documentation</a>
           </p>
         </section>
 
@@ -211,7 +214,7 @@
 
         <section>
           <section>
-            <p>Declaração</p>
+            <p>Declaração (return object)</p>
             <pre><code>
 &lt;body&gt;
   &lt;my-directive&gt;&lt;/my-directive&gt;
@@ -232,7 +235,7 @@
           </section>
 
           <section>
-            <p>Declaração</p>
+            <p>Declaração (return function)</p>
             <pre><code>
 &lt;body&gt;
   &lt;my-directive&gt;&lt;/my-directive&gt;
@@ -253,7 +256,7 @@
           </section>
 
           <section>
-            <p>Declaração</p>
+            <p>Declaração (<i>injection function annotation</i>)</p>
             <pre><code style="font-size:70%;line-height:normal;">
 &lt;body&gt;
   &lt;my-directive&gt;&lt;/my-directive&gt;
@@ -310,7 +313,16 @@ myModule.directive('directiveName', function factory(injectables) {
 });
             </code></pre>
             <p class="smalltext">
-              <a href="https://docs.angularjs.org/api/ng/service/$compile#directive-definition-object">Guide to AngularJS Documentation</a>
+              <a target="blank" href="https://docs.angularjs.org/api/ng/service/$compile#directive-definition-object">Guide to AngularJS Documentation</a>
+            </p>
+          </section>
+          
+          <section>
+            <blockquote cite="https://docs.angularjs.org/api/ng/service/$compile#">
+              Best Practice: It's recommended to use the "directive definition object" form.
+            </blockquote>
+            <p class="smalltext">
+              <a target="blank" href="https://docs.angularjs.org/api/ng/service/$compile#">AngularJS API Reference - Service components in ng ($compile)</a>
             </p>
           </section>
         </section>
@@ -353,7 +365,7 @@ myModule.directive('directiveName', function factory(injectables) {
               <li>Convert the :, -, or _-delimited name to camelCase.</li>
             </ul>
             <p class="smalltext">
-              <a href="https://docs.angularjs.org/guide/directive">Guide to AngularJS Documentation</a>
+              <a target="blank" href="https://docs.angularjs.org/guide/directive">Guide to AngularJS Documentation</a>
             </p>
           </section>
 
@@ -556,7 +568,8 @@ angular.module('myApp', [])
       ...
       transclude: {boolean},
       ...
-      template: "...<ng-transclude></ng-transclude>..."
+      template: "...<ng-transclude></ng-transclude>...",
+      ...
     };
   });
             </code></pre>
@@ -643,7 +656,7 @@ angular.module('myApp', [])
 &lt;/texto&gt;
             </code></pre>
 
-            <p>transclude: 'element'</p>
+            <p>transclude: 'element' + replace: true</p>
             <pre><code>
 &lt;ng-transclude&gt;
   &lt;texto class="ng-scope"&gt;
@@ -715,29 +728,410 @@ angular.module('myApp', [])
             <img src="transclude-scope.png">
             
             <p class="smalltext">
-              <a href="https://thinkster.io/a-better-way-to-learn-angularjs/transclusion">Thinkster - A Better Way to Learn AngularJS</a>
+              <a target="blank" href="https://thinkster.io/a-better-way-to-learn-angularjs/transclusion">Thinkster - A Better Way to Learn AngularJS</a>
             </p>
           </section>
         </section>
         
         <section>
-          <p>controller</p>
-          <a target="blank" href="http://jsbin.com/detuji/edit">http://jsbin.com/detuji</a>
+          <section>
+            <p>controller</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      controller: {function},
+      ...
+      controllerAs: {string},
+      ...
+    };
+  });
+            </code></pre>
+            <blockquote>Best Practice: use controller when you want to expose an API to other directives.</blockquote>
+          </section>
+
+          <section>
+            <p>controller</p>
+            <pre><code class="code-size-60">
+&lt;body&gt;
+  &lt;div texto-expandivel&gt;
+    &lt;h3 ng-click="toggle()"&gt;Título&lt;/h3&gt;
+    &lt;p ng-show="mostrar"&gt;Olá mundo!&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('textoExpandivel', function() {
+          return {
+            controller:function($scope, $element) {
+              $scope.mostrar = false;
+
+              $scope.toggle = function() {
+                $scope.mostrar = !$scope.mostrar;
+              }
+            }
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/detuji/edit">http://jsbin.com/detuji</a>
+          </section>
+          
+          <section>
+            <p>controllerAs</p>
+            <pre><code class="code-size-55">
+&lt;body ng-init="titulo='Título';texto='Olá mundo!'"&gt;
+  &lt;texto-expandivel titulo="titulo" texto="texto"&gt;&lt;/texto-expandivel&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('textoExpandivel', function() {
+          return {
+            scope: {
+              titulo:'=',
+              texto:'='
+            },
+            template: '&lt;h3 ng-click="vm.toggle()"&gt;{{titulo}}&lt;/h3&gt;&lt;p ng-show="vm.mostrar"&gt;{{texto}}&lt;/p&gt;',
+            controller:function($scope, $element) {
+              var vm = this;
+              vm.mostrar = false;
+              vm.toggle = function() {
+                vm.mostrar = !vm.mostrar;
+              }
+            },
+            controllerAs: 'vm'
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+          </section>
         </section>
-        
+
         <section>
-          <p>link</p>
-          <a target="blank" href="http://jsbin.com/xuruzo/edit">http://jsbin.com/xuruzo</a>
+          <section>
+            <p>link</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      link: {function} ou {object},
+      ...
+    };
+  });
+            </code></pre>
+            <blockquote>Best Practice: use controller when you want to expose an API to other directives. Otherwise use link.</blockquote>
+          </section>          
+
+          <section>
+            <p>link</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      link: function postLink(scope, elem, attrs) { ... },
+      ...
+    };
+  });
+            </code></pre>
+          </section>
+
+          <section>
+            <p>link</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      link: {
+        pre: function preLink(scope, elem, attrs) { ... },
+        post: function postLink(scope, elem, attrs) { ... }
+      },
+      ...
+    };
+  });
+            </code></pre>
+          </section>          
+
+          <section>
+            <p>link</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return function postLink(scope, elem, attrs) { ... }
+  });
+            </code></pre>
+          </section>
+
+          <section>
+            <p>link</p>
+            <pre><code class="code-size-60">
+&lt;body&gt;
+  &lt;div texto-expandivel&gt;
+    &lt;h3&gt;Título&lt;/h3&gt;
+    &lt;p ng-show="mostrar"&gt;Olá mundo!&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('textoExpandivel', function() {
+          return {
+            link:function(scope, elem, attrs) {
+              scope.mostrar = false;
+
+              elem.find('h3').bind('click', function(){
+                scope.mostrar = !scope.mostrar;
+                scope.$apply();
+              });
+            }
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/xuruzo/edit">http://jsbin.com/xuruzo</a>
+          </section>
         </section>
-        
+
         <section>
           <p>restrict: comment</p>
+          <pre><code class="code-size-80">
+&lt;body&gt;
+  &lt;!-- directive: my-directive --&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function($compile) {
+          return {
+            restrict: 'M',
+            link:function(scope, elem, attrs) {
+              console.log('linking my-directive');
+              elem.after($compile("&lt;p&gt;Olá mundo!&lt;/p&gt;")(scope));
+            }
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+          </code></pre>
           <a target="blank" href="http://jsbin.com/kixiho/edit">http://jsbin.com/kixiho</a>
+        </section>
+
+        <section>
+          <section>
+            <p>scopes</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      scope: {boolean} ou {object},
+      ...
+    };
+  });
+            </code></pre>
+            <ul>
+              <li>scope: false - utiliza o escopo pai;</li>
+              <li>scope: true - cria um novo escopo que herda do escopo pai;</li>
+              <li>scope: object - cria um novo escopo que não herda do escopo pai.</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>scopes</p>
+            <p><a target="blank" href="http://jsbin.com/kimige/edit"><strike>http://jsbin.com/kimige</strike></a></p>
+            <p><a target="blank" href="../exemplos/01-scopes.html">Exemplo com AngularJS Batarang</a></p>
+          </section>
+
+          <section>
+            <p>scope: object</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      scope: {
+        foo: '@',
+        bar: '=',
+        xulambs: '&'
+      },
+      ...
+    };
+  });
+            </code></pre>
+            <ul>
+              <li>'@': <i>bind</i> de variáveis por valor (<i>read only</i>);</li>
+              <li>'=': <i>bind</i> de variáveis por referência (<i>read/write</i>);</li>
+              <li>'&': <i>bind</i> de expressões ou métodos que serão executados no escopo de que fazem parte.</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>isolated scope - bind (@)</p>
+            <pre><code class="code-size-70">
+&lt;body&gt;
+  &lt;div&gt;
+    Mensagem: &lt;input type="text" ng-model="vm.mensagem"&gt;
+    &lt;hr/&gt;
+    &lt;my-directive mensagem-attr="{{vm.mensagem}}"&gt;&lt;/my-directive&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function(){
+          return {
+            scope:{
+              msg: '@mensagemAttr'
+            },
+            template:'Mensagem: {{msg}}'
+          }
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/fopede/edit">http://jsbin.com/fopede</a>
+          </section>
+
+          <section>
+            <p>isolated scope - bind (=)</p>
+            <pre><code class="code-size-70">
+&lt;body&gt;
+  &lt;div&gt;
+    Mensagem: &lt;input type="text" ng-model="vm.mensagem"&gt;
+    &lt;hr/&gt;
+    &lt;my-directive mensagem-attr="vm.mensagem"&gt;&lt;/my-directive&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('myDirective', function(){
+          return {
+            scope:{
+              msg: '=mensagemAttr'
+            },
+            template:'Mensagem: &lt;input type="text" ng-model="msg"&gt;'
+          }
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/hojoci/edit">http://jsbin.com/hojoci</a>
+          </section>
+
+          <section>
+            <p>isolated scope - bind (&)</p>
+            <pre><code class="code-size-50">
+&lt;body&gt;
+  &lt;div ng-controller="MyController"&gt;
+    Mensagem (MyController): {{mensagem}}
+    &lt;hr/&gt;
+    &lt;my-directive on-update-mensagem="updateMensagem(msg)"&gt;&lt;/my-directive&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .controller('MyController', function($scope){
+          $scope.updateMensagem = function(msg) {
+            $scope.mensagem = msg;
+          };
+        })
+        .directive('myDirective', function(){
+          return {
+            scope:{
+              onUpdateMensagem: '&amp;'
+            },
+            template:'Mensagem (myDirective): &lt;input type="text" ng-model="msg" ng-change="updateMensagem()"&gt;',
+            controller: function($scope) {
+              $scope.updateMensagem = function() {
+                $scope.onUpdateMensagem({msg: $scope.msg});
+              };
+            }
+          }
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/pelivu/edit">http://jsbin.com/pelivu</a>
+          </section>
         </section>
         
         <section>
-          <p>scopes</p>
-          <a target="blank" href="http://jsbin.com/kimige/edit">http://jsbin.com/kimige</a>
+          <section>
+            <p>priority</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      priority: {number},
+      ...
+    };
+  });
+            </code></pre>
+              <p style="text-align: justify;padding-left:3em;padding-right:3em;">
+                Quando há muitas diretivas num mesmo elemento a prioridade especifica a ordem em que serão compiladas.
+                Diretivas com maior prioridade são compiladas primeiro. <i>default: 0</i>
+              </p>
+          </section>
+
+          <section>
+            <p>priority: ordem de execução das funções</p>
+            <img src="ng_transclude_steps_by_priority.png">
+            <p class="smalltext">
+              <a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/">triangular.io - Directive Compilation in AngularJS – step-by-step</a>
+            </p>
+
+          </section>
+          <section>
+            <p>prioroty</p>
+            <pre><code class="code-size-55">
+&lt;body&gt;
+  &lt;div mensagem alerta&gt;Olá mundo!&lt;/div&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('mensagem', function() {
+          return {
+            priority: 0,
+            link: function(scope, elem, attrs) {
+              elem.addClass('mensagem');
+            }
+          };
+        })
+        .directive('alerta', function() {
+          return {
+            priority: 1,
+            link: function(scope, elem, attrs) {
+              if (elem.hasClass('mensagem')) {
+                elem.addClass('mensagem-de-alerta');
+              }
+            }
+          };
+        });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/zefojo/edit">http://jsbin.com/zefojo</a>
+          </section>
         </section>
 			</div>
 		</div>
