@@ -39,12 +39,13 @@
 		    font-size:50%;
 		  }
 		  pre .code-size-90 { font-size:90%;line-height:normal; }
+		  pre .code-size-85 { font-size:85%;line-height:normal; }
 		  pre .code-size-80 { font-size:80%;line-height:normal; }
+		  pre .code-size-75 { font-size:75%;line-height:normal; }
 		  pre .code-size-70 { font-size:70%;line-height:normal; }
 		  pre .code-size-65 { font-size:65%;line-height:normal; }
 		  pre .code-size-60 { font-size:60%;line-height:normal; }
 		  pre .code-size-55 { font-size:55%;line-height:normal; }
-		  pre .code-size-50 { font-size:50%;line-height:normal; }
 		</style>
 	</head>
 
@@ -64,13 +65,13 @@
           <section>
 	  				<blockquote cite="https://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/">
 		  				&ldquo;AngularJS Directive is what we have close to <a href="http://www.polymer-project.org/">Web Components</a>
-			  			at this time and is the most crucial and difficult piece in AngularJS.&rdquo; -- Amit Gharat (@codef0rmer)
+			  			at this time and is the most crucial and difficult piece in AngularJS.&rdquo; -- Amit Gharat (<a target="blank" href="http://twitter.com/codef0rmer">@codef0rmer</a>)
 				  	</blockquote>
           </section>
 
           <section>
             <blockquote cite="http://www.sitepoint.com/practical-guide-angularjs-directives/">
-              &ldquo;Directives are the most important components of any AngularJS application.&rdquo; -- Sandeep Panda (@sandeepg33k)
+              &ldquo;Directives are the most important components of any AngularJS application.&rdquo; -- Sandeep Panda (<a target="blank" href="http://twitter.com/sandeepg33k">@sandeepg33k</a>)
             </blockquote>
           </section>
         </section>
@@ -213,8 +214,40 @@
         </section>
 
         <section>
+          <section data-background="white">
+            <p><a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/">Directive Compilation in AngularJS – step-by-step</a></p>
+            <img src="a1.png">
+            <p class="smalltext">by <a target="blank" href="http://triangular.io/blog/author/jakub/">Jakub Strojewski</a> at <a target="blank" href="http://triangular.io/">triangular</a></p>
+          </section>          
+
+          <section data-background="white">
+            <p><a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/">Directive Compilation in AngularJS – step-by-step</a></p>
+            <img src="a1-2.png">
+            <p class="smalltext">by <a target="blank" href="http://triangular.io/blog/author/jakub/">Jakub Strojewski</a> at <a target="blank" href="http://triangular.io/">triangular</a></p>
+          </section>          
+
+          <section data-background="white">
+            <p><a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/">Directive Compilation in AngularJS – step-by-step</a></p>
+            <img src="a1-3.png">
+            <p class="smalltext">by <a target="blank" href="http://triangular.io/blog/author/jakub/">Jakub Strojewski</a> at <a target="blank" href="http://triangular.io/">triangular</a></p>
+          </section>
+          
+           <section data-background="white">
+            <p><a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/">Directive Compilation in AngularJS – step-by-step</a></p>
+            <img src="ng_transclude_steps_by_priority.png">
+            <p class="smalltext">by <a target="blank" href="http://triangular.io/blog/author/jakub/">Jakub Strojewski</a> at <a target="blank" href="http://triangular.io/">triangular</a></p>
+          </section>
+
+           <section data-background="white">
+            <p><a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/">Directive Compilation in AngularJS – step-by-step</a></p>
+            <img src="ng_transclude_compile_phases_for_nested.png">
+            <p class="smalltext">by <a target="blank" href="http://triangular.io/blog/author/jakub/">Jakub Strojewski</a> at <a target="blank" href="http://triangular.io/">triangular</a></p>
+          </section>
+        </section>
+
+        <section>
           <section>
-            <p>Declaração (return object)</p>
+            <p>Declaração (<i>return object</i>)</p>
             <pre><code>
 &lt;body&gt;
   &lt;my-directive&gt;&lt;/my-directive&gt;
@@ -235,7 +268,7 @@
           </section>
 
           <section>
-            <p>Declaração (return function)</p>
+            <p>Declaração (<i>return function</i>)</p>
             <pre><code>
 &lt;body&gt;
   &lt;my-directive&gt;&lt;/my-directive&gt;
@@ -397,7 +430,7 @@ myModule.directive('directiveName', function factory(injectables) {
           <section>
             <p>restrict</p>
 
-            <pre><code>
+            <pre><code class="code-size-80">
 angular.module('myApp', [])
   .directive('myDirective', function() {
     return {
@@ -407,7 +440,7 @@ angular.module('myApp', [])
     };
   });
             </code></pre>
-
+            <p>Restringe o tipo de declaração da diretiva para:</p>
             <ul>
               <li>Elementos: 'E'</li>
               <li>Atributos: 'A'</li>
@@ -461,11 +494,12 @@ angular.module('myApp', [])
   .directive('myDirective', function() {
     return {
       ...
-      templateUrl:'url'
+      templateUrl: 'directive.tpl.html'
       ...
     };
   });
             </code></pre>
+            <p>Carrega o <i>template</i> de forma assíncrona.</p>
           </section>
           <section>
             <p>templateUrl</p>
@@ -506,6 +540,7 @@ angular.module('myApp', [])
     };
   });
             </code></pre>
+            <p>Substitui o elemento em que a diretiva é declarada pelo seu <i>template</i>.</p>
           </section>
 
           <section>
@@ -573,6 +608,7 @@ angular.module('myApp', [])
     };
   });
             </code></pre>
+            <p>Extrai o conteúdo do elemento em que a diretiva é declarada e o disponibiliza para a diretiva.</p>
           </section>
           <section>
             <p>transclude</p>
@@ -647,27 +683,7 @@ angular.module('myApp', [])
           </section>
 
           <section>
-            <p>transclude: true</p>
-            <pre><code>
-&lt;texto&gt;
-  &lt;ng-transclude&gt;
-    &lt;p class="ng-scope"&gt;Olá mundo!&lt;/p&gt;
-  &lt;/ng-transclude&gt;
-&lt;/texto&gt;
-            </code></pre>
-
             <p>transclude: 'element' + replace: true</p>
-            <pre><code>
-&lt;ng-transclude&gt;
-  &lt;texto class="ng-scope"&gt;
-    &lt;p&gt;Olá mundo!&lt;/p&gt;
-  &lt;/texto&gt;
-&lt;/ng-transclude&gt;
-            </code></pre>
-          </section>
-
-          <section>
-            <p>transclude: 'element'</p>
             <pre><code style="font-size:80%;line-height:normal;">
 &lt;body&gt;
   &lt;texto&gt;
@@ -690,7 +706,27 @@ angular.module('myApp', [])
             </code></pre>
             <a target="blank" href="http://jsbin.com/fikogu/edit">http://jsbin.com/fikogu</a>
           </section>
-          
+
+          <section>
+            <p>transclude: true</p>
+            <pre><code>
+&lt;texto&gt;
+  &lt;ng-transclude&gt;
+    &lt;p class="ng-scope"&gt;Olá mundo!&lt;/p&gt;
+  &lt;/ng-transclude&gt;
+&lt;/texto&gt;
+            </code></pre>
+
+            <p>transclude: 'element' + replace: true</p>
+            <pre><code>
+&lt;ng-transclude&gt;
+  &lt;texto class="ng-scope"&gt;
+    &lt;p&gt;Olá mundo!&lt;/p&gt;
+  &lt;/texto&gt;
+&lt;/ng-transclude&gt;
+            </code></pre>
+          </section>
+
           <section>
             <p><a target="blank" href="http://angular-tips.com/blog/2014/03/transclusion-and-scopes/">Angular Tips - Transclusion and Scopes (by Jesus Rodriguez)</a></p>
             <pre><code style="font-size:55%;line-height:normal;">
@@ -753,7 +789,7 @@ angular.module('myApp', [])
 
           <section>
             <p>controller</p>
-            <pre><code class="code-size-60">
+            <pre><code class="code-size-75">
 &lt;body&gt;
   &lt;div texto-expandivel&gt;
     &lt;h3 ng-click="toggle()"&gt;Título&lt;/h3&gt;
@@ -761,20 +797,17 @@ angular.module('myApp', [])
   &lt;/div&gt;
 
   &lt;script&gt;
-    (function(){
-      angular.module('myApp', [])
-        .directive('textoExpandivel', function() {
-          return {
-            controller:function($scope, $element) {
-              $scope.mostrar = false;
-
-              $scope.toggle = function() {
-                $scope.mostrar = !$scope.mostrar;
-              }
+    angular.module('myApp', [])
+      .directive('textoExpandivel', function() {
+        return {
+          controller:function($scope, $element) {
+            $scope.mostrar = false;
+            $scope.toggle = function() {
+              $scope.mostrar = !$scope.mostrar;
             }
-          };
-        });
-    })();
+          }
+        };
+      });
   &lt;/script&gt;
 &lt;/body&gt;
             </code></pre>
@@ -783,40 +816,80 @@ angular.module('myApp', [])
           
           <section>
             <p>controllerAs</p>
-            <pre><code class="code-size-55">
-&lt;body ng-init="titulo='Título';texto='Olá mundo!'"&gt;
-  &lt;texto-expandivel titulo="titulo" texto="texto"&gt;&lt;/texto-expandivel&gt;
+            <pre><code class="code-size-80">
+angular.module('myApp', [])
+  .directive('textoExpandivel', function() {
+    return {
+      scope: {
+        titulo:'=',
+        texto:'='
+      },
+      template: '&lt;h3 ng-click="vm.toggle()"&gt;{{titulo}}&lt;/h3&gt;&lt;p ng-show="vm.mostrar"&gt;{{texto}}&lt;/p&gt;',
+      controller:function($scope, $element) {
+        var vm = this;
+        vm.mostrar = false;
+        vm.toggle = function() {
+          vm.mostrar = !vm.mostrar;
+        }
+      },
+      controllerAs: 'vm'
+    };
+  });
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/yewoka/edit">http://jsbin.com/yewoka</a>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <p>compile</p>
+            <pre><code>
+myModule.directive('myDirective', function factory(injectables) {
+    return {
+      ...
+      compile: function compile(tElement, tAttrs, transclude) {
+        return {
+          pre: function preLink(scope, iElement, iAttrs, controller) { ... },
+          post: function postLink(scope, iElement, iAttrs, controller) { ... }
+        }
+        // or
+        // return function postLink( ... ) { ... }
+      },
+      ...
+    };
+  });
+            </code></pre>
+            <p>Utilizado para realizar manipulações no DOM.</p>
+          </section>
+          
+          <section>
+            <p>compile</p>
+            <pre><code class="code-size-90">
+&lt;body&gt;
+  &lt;div my-directive&gt;&lt;/div&gt;
 
   &lt;script&gt;
     (function(){
       angular.module('myApp', [])
-        .directive('textoExpandivel', function() {
+        .directive('myDirective', function() {
           return {
-            scope: {
-              titulo:'=',
-              texto:'='
-            },
-            template: '&lt;h3 ng-click="vm.toggle()"&gt;{{titulo}}&lt;/h3&gt;&lt;p ng-show="vm.mostrar"&gt;{{texto}}&lt;/p&gt;',
-            controller:function($scope, $element) {
-              var vm = this;
-              vm.mostrar = false;
-              vm.toggle = function() {
-                vm.mostrar = !vm.mostrar;
-              }
-            },
-            controllerAs: 'vm'
+            compile:function(elem, attrs) {
+              elem.append('Adicionado pelo compile');
+            }
           };
         });
     })();
   &lt;/script&gt;
 &lt;/body&gt;
             </code></pre>
+            <a target="blank" href="http://jsbin.com/cojeze/edit">http://jsbin.com/cojeze</a>
           </section>
         </section>
-
+        
         <section>
           <section>
             <p>link</p>
+            <p>Utilizado somente se a propriedade <i>compile</i> não estiver definida.</p>
             <pre><code>
 angular.module('myApp', [])
   .directive('myDirective', function() {
@@ -1035,40 +1108,64 @@ angular.module('myApp', [])
 
           <section>
             <p>isolated scope - bind (&)</p>
-            <pre><code class="code-size-50">
+            <pre><code class="code-size-55">
 &lt;body&gt;
   &lt;div ng-controller="MyController"&gt;
-    Mensagem (MyController): {{mensagem}}
-    &lt;hr/&gt;
+    Mensagem (MyController): {{mensagem}} &lt;hr/&gt;
     &lt;my-directive on-update-mensagem="updateMensagem(msg)"&gt;&lt;/my-directive&gt;
   &lt;/div&gt;
-
   &lt;script&gt;
-    (function(){
-      angular.module('myApp', [])
-        .controller('MyController', function($scope){
-          $scope.updateMensagem = function(msg) {
-            $scope.mensagem = msg;
-          };
-        })
-        .directive('myDirective', function(){
-          return {
-            scope:{
-              onUpdateMensagem: '&amp;'
-            },
-            template:'Mensagem (myDirective): &lt;input type="text" ng-model="msg" ng-change="updateMensagem()"&gt;',
-            controller: function($scope) {
-              $scope.updateMensagem = function() {
-                $scope.onUpdateMensagem({msg: $scope.msg});
-              };
-            }
+    angular.module('myApp', [])
+      .controller('MyController', function($scope){
+        $scope.updateMensagem = function(msg) {
+          $scope.mensagem = msg;
+        };
+      })
+      .directive('myDirective', function(){
+        return {
+          scope:{
+            onUpdateMensagem: '&amp;'
+          },
+          template:'Mensagem (myDirective): &lt;input type="text" ng-model="msg" ng-change="updateMensagem()"&gt;',
+          controller: function($scope) {
+            $scope.updateMensagem = function() {
+              $scope.onUpdateMensagem({msg: $scope.msg});
+            };
           }
-        });
-    })();
+        }
+      });
   &lt;/script&gt;
 &lt;/body&gt;
             </code></pre>
             <a target="blank" href="http://jsbin.com/pelivu/edit">http://jsbin.com/pelivu</a>
+          </section>
+
+          <section>
+            <p>isolated scope - bindToController</p>
+            <pre><code class="code-size-70">
+&lt;body&gt;
+  &lt;div&gt;
+    Mensagem: &lt;input type="text" ng-model="vm.mensagem"&gt;&lt;hr/&gt;
+    &lt;my-directive mensagem-attr="{{vm.mensagem}}"&gt;&lt;/my-directive&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    angular.module('myApp', [])
+      .directive('myDirective', function(){
+        return {
+          scope:{
+            msg: '@mensagemAttr'
+          },
+          controller: function() { },
+          controllerAs: 'myCtrl',
+          bindToController: true,
+          template:'Mensagem: {{myCtrl.msg}}'
+        }
+      });
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/mogisa/edit">http://jsbin.com/mogisa</a>
           </section>
         </section>
         
@@ -1085,14 +1182,14 @@ angular.module('myApp', [])
     };
   });
             </code></pre>
-              <p style="text-align: justify;padding-left:3em;padding-right:3em;">
-                Quando há muitas diretivas num mesmo elemento a prioridade especifica a ordem em que serão compiladas.
-                Diretivas com maior prioridade são compiladas primeiro. <i>default: 0</i>
-              </p>
+            <p style="text-align: justify;padding-left:3em;padding-right:3em;">
+              Quando há muitas diretivas num mesmo elemento a prioridade especifica a ordem em que serão compiladas.
+              Diretivas com maior prioridade são compiladas primeiro. <i>default: 0</i>
+            </p>
           </section>
 
-          <section>
-            <p>priority: ordem de execução das funções</p>
+          <section data-background="white">
+            <p>Ordem de execução das funções, conforme prioridade</p>
             <img src="ng_transclude_steps_by_priority.png">
             <p class="smalltext">
               <a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/">triangular.io - Directive Compilation in AngularJS – step-by-step</a>
@@ -1133,6 +1230,136 @@ angular.module('myApp', [])
             <a target="blank" href="http://jsbin.com/zefojo/edit">http://jsbin.com/zefojo</a>
           </section>
         </section>
+        
+        <section>
+          <section>
+            <p>terminal</p>
+            <pre><code>
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      terminal: {boolean},
+      ...
+    };
+  });
+            </code></pre>
+            <p style="text-align: justify;padding-left:3em;padding-right:3em;">
+              Faz com que as diretivas de prioridade maior que a da diretiva corrente aplicadas ao mesmo elemento não sejam executadas.
+            </p>
+          </section>
+          
+          <section>
+            <p>terminal</p>
+            <pre><code class="code-size-65">
+angular.module('myApp', [])
+  .directive('diretiva1', function() {
+    return {
+      link: function(scope, elem, attrs) {
+        elem.addClass('diretiva1');
+      }, priority: 0
+    };
+  })
+  .directive('diretiva2', function() {
+    return {
+      link: function(scope, elem, attrs) {
+        elem.addClass('diretiva2');
+      }, priority: 1, terminal:true
+    };
+  })
+  .directive('diretiva3', function() {
+    return {
+      link: function(scope, elem, attrs) {
+        elem.addClass('diretiva3');
+      }, priority: 2
+    };
+  });
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/garizi/edit">http://jsbin.com/garizi</a>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <p>require</p>
+            <pre><code class="code-size-80">
+angular.module('myApp', [])
+  .directive('myDirective', function() {
+    return {
+      ...
+      require: 'siblingDirectiveName',
+      // or
+      require: ['^parentDirectiveName', '?optionalDirectiveName', '?^optionalParent'],
+      ...
+    };
+  });
+            </code></pre>
+            <p>Injeta o <i>controller</i> de outra diretiva na função <i>link</i> da diretiva corrente.</p>
+            <ul>
+              <li>(nenhum prefixo) - pesquisa no elemento corrente;</li>
+              <li>^ - pesquisa no elemento corrente e nos pais;</li>
+              <li>^^ - pesquisa somente nos pais.</li>
+            </ul>
+            <p>? - passa <i>null</i> para a função <i>link</i> caso o controller não seja encontrado.</p>
+          </section>
+          
+          <section>
+            <p>require</p>
+            <pre><code class="code-size-65">
+angular.module('myApp', [])
+  .directive('player', function() {
+    return {
+      controller:function($scope) {
+        var vm = this;
+        vm.ligado = false;
+        vm.toggle = function() {
+          vm.ligado = !vm.ligado;
+          $scope.$apply();
+        };
+      }, controllerAs:'vm'
+    };
+  })
+  .directive('onOff', function() {
+    return {
+      require: '^player',
+      link: function(scope, elem, attrs, playerCtrl) {
+        elem.bind('click', function(){
+          playerCtrl.toggle();
+        });
+      }
+    };
+  });
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/yagufe/edit">http://jsbin.com/yagufe</a>
+          </section>
+        </section>
+        
+        <section>
+          <p>Referências</p>
+          <a target="blank" href="https://www.youtube.com/watch?v=MpI3HKDVZm0"><p class="smalltext">YouTube: 18 Tips For The Angular Architect</p></a>
+          <a target="blank" href="https://www.youtube.com/watch?v=Ty8XcASK9js"><p class="smalltext">YouTube: Advanced Directives with Angular JS</p></a>
+          <a target="blank" href="https://www.youtube.com/watch?v=gE4hyIfUD-A"><p class="smalltext">YouTube: Component-based Directives in Angular</p></a>
+          <a target="blank" href="http://tech.blinemedical.com/sharing-data-between-child-and-parent-directives-and-scopes-in-angularjs/">
+            <p class="smalltext">Sharing data between child and parent directives and scopes (in AngularJS) (by Krystal Xu August 14, 2014)</p>
+          </a>
+          <a target="blank" href="https://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/">
+            <p class="smalltext">The Hitchhiker’s Guide to the Directive (June 8, 2013 by codef0rmer)</p>
+          </a>
+          <a target="blank" href="http://www.sitepoint.com/series/a-practical-guide-to-angularjs-directives/">
+            <p class="smalltext">A Practical Guide to AngularJS (by Sandeep Panda - Jan, 2014)</p>
+          </a>
+          <a target="blank" href="http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html">
+            <p class="smalltext">How I've Improved My Angular Apps by Banning ng-controller</p>
+          </a>
+          <a target="blank" href="https://gist.github.com/CMCDragonkai/6282750"><p class="smalltext">AngularJS Directive Attribute Binding Explanation</p></a>
+          <a target="blank" href="http://www.peterbe.com/plog/an-angularjs-directive-with-itself-as-the-attribut"><p class="smalltext">An AngularJS directive with itself as the attribute</p></a>
+          <a target="blank" href="https://www.codementor.io/angularjs/tutorial/how-angular-directive-scope-work"><p class="smalltext">AngularJS Tutorial: Understanding How Directives Work</p></a>
+          <a target="blank" href="http://triangular.io/blog/directive-compilation-in-angularjs-step-by-step/"><p class="smalltext">Directive Compilation in AngularJS – step-by-step</p></a>
+          <a target="blank" href="http://www.bennadel.com/blog/2810-directive-architecture-template-urls-and-linking-order-in-angularjs.htm">
+            <p class="smalltext">Directive Architecture, Template URLs, And Linking Order In AngularJS</p>
+          </a>
+        </section>
+        
 			</div>
 		</div>
 
