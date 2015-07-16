@@ -726,47 +726,6 @@ angular.module('myApp', [])
 &lt;/ng-transclude&gt;
             </code></pre>
           </section>
-
-          <section>
-            <p><a target="blank" href="http://angular-tips.com/blog/2014/03/transclusion-and-scopes/">Angular Tips - Transclusion and Scopes (by Jesus Rodriguez)</a></p>
-            <pre><code style="font-size:55%;line-height:normal;">
-&lt;body ng-init="person={name:'John Doe'};header='Person'"&gt;
-  &lt;person header="header"&gt;
-    &lt;h2&gt;{{header}}&lt;/h2&gt;
-    &lt;p&gt;Hello, I am {{person.name}}&lt;/p&gt;
-  &lt;/person&gt;
-
-  &lt;script&gt;
-    (function(){
-      angular.module('myApp', [])
-        .directive('person', function() {
-          return {
-            scope: { header: '=' },
-            transclude:true,
-            template: '&lt;div ng-transclude&gt;&lt;/div&gt;',
-            link: function(scope, element, attrs) {
-              scope.person = {
-                name: 'Directive Joe'
-              };
-
-              scope.header = 'Directive\'s header';
-            }
-          };
-      });
-    })();
-  &lt;/script&gt;
-&lt;/body&gt;
-            </code></pre>
-            <a target="blank" href="http://jsbin.com/turoje/edit">http://jsbin.com/turoje</a>
-          </section>
-          
-          <section data-background="white">
-            <img src="transclude-scope.png">
-            
-            <p class="smalltext">
-              <a target="blank" href="https://thinkster.io/a-better-way-to-learn-angularjs/transclusion">Thinkster - A Better Way to Learn AngularJS</a>
-            </p>
-          </section>
         </section>
         
         <section>
@@ -889,59 +848,22 @@ myModule.directive('myDirective', function factory(injectables) {
         <section>
           <section>
             <p>link</p>
-            <p>Utilizado somente se a propriedade <i>compile</i> não estiver definida.</p>
-            <pre><code>
-angular.module('myApp', [])
-  .directive('myDirective', function() {
-    return {
-      ...
-      link: {function} ou {object},
-      ...
-    };
-  });
-            </code></pre>
-            <blockquote>Best Practice: use controller when you want to expose an API to other directives. Otherwise use link.</blockquote>
-          </section>          
-
-          <section>
-            <p>link</p>
-            <pre><code>
-angular.module('myApp', [])
-  .directive('myDirective', function() {
-    return {
-      ...
-      link: function postLink(scope, elem, attrs) { ... },
-      ...
-    };
-  });
-            </code></pre>
-          </section>
-
-          <section>
-            <p>link</p>
             <pre><code>
 angular.module('myApp', [])
   .directive('myDirective', function() {
     return {
       ...
       link: {
-        pre: function preLink(scope, elem, attrs) { ... },
-        post: function postLink(scope, elem, attrs) { ... }
-      },
+        pre: function preLink(scope, iElement, iAttrs, controller) { ... },
+        post: function postLink(scope, iElement, iAttrs, controller) { ... }
+      }
+      // or
+      link: function postLink( ... ) { ... }
       ...
     };
   });
             </code></pre>
-          </section>          
-
-          <section>
-            <p>link</p>
-            <pre><code>
-angular.module('myApp', [])
-  .directive('myDirective', function() {
-    return function postLink(scope, elem, attrs) { ... }
-  });
-            </code></pre>
+            <blockquote>Best Practice: use controller when you want to expose an API to other directives. <strong>Otherwise use link</strong>.</blockquote>
           </section>
 
           <section>
@@ -1171,6 +1093,49 @@ angular.module('myApp', [])
         
         <section>
           <section>
+            <p><a target="blank" href="http://angular-tips.com/blog/2014/03/transclusion-and-scopes/">Angular Tips - Transclusion and Scopes (by Jesus Rodriguez)</a></p>
+            <pre><code style="font-size:55%;line-height:normal;">
+&lt;body ng-init="person={name:'John Doe'};header='Person'"&gt;
+  &lt;person header="header"&gt;
+    &lt;h2&gt;{{header}}&lt;/h2&gt;
+    &lt;p&gt;Hello, I am {{person.name}}&lt;/p&gt;
+  &lt;/person&gt;
+
+  &lt;script&gt;
+    (function(){
+      angular.module('myApp', [])
+        .directive('person', function() {
+          return {
+            scope: { header: '=' },
+            transclude:true,
+            template: '&lt;div ng-transclude&gt;&lt;/div&gt;',
+            link: function(scope, element, attrs) {
+              scope.person = {
+                name: 'Directive Joe'
+              };
+
+              scope.header = 'Directive\'s header';
+            }
+          };
+      });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/turoje/edit">http://jsbin.com/turoje</a>
+          </section>
+          
+          <section data-background="white">
+            <img src="transclude-scope.png">
+            
+            <p class="smalltext">
+              <a target="blank" href="https://thinkster.io/a-better-way-to-learn-angularjs/transclusion">Thinkster - A Better Way to Learn AngularJS</a>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
             <p>priority</p>
             <pre><code>
 angular.module('myApp', [])
@@ -1197,7 +1162,7 @@ angular.module('myApp', [])
 
           </section>
           <section>
-            <p>prioroty</p>
+            <p>priority</p>
             <pre><code class="code-size-55">
 &lt;body&gt;
   &lt;div mensagem alerta&gt;Olá mundo!&lt;/div&gt;
@@ -1360,6 +1325,25 @@ angular.module('myApp', [])
           </a>
         </section>
         
+        <section>
+          <p>Exercício</p>
+          <p>Criar diretivas para a aplicação Deputados:</p>
+          <ul>
+            <li>Conteúdo de cada item da lista de deputados;</li>
+            <li>Conteúdo da tela de detalhes do deputado.</li>
+          </ul>
+
+          <!--
+          <p>2. Criar funcionalidade <i>favoritos</i></p>
+
+          <ul>
+            <li>Adicionar checkbox à dela de detalhes do deputado</li>
+            <li>Criar tela de favoritos com a lista de deputados marcados como favoritos</li>
+            <li>Os deputados marcados como favoritos devem aparecer na tela de favoritos</li>
+            <li>Reutilize as diretivas do exercício 1</li>
+          </ul>
+          -->
+        </section>
 			</div>
 		</div>
 
