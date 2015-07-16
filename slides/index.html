@@ -774,6 +774,26 @@ angular.module('myApp', [])
           </section>
           
           <section>
+            <p>controller</p>
+            <pre><code>
+angular.module('myApp', [])
+  .controller('TextoExpandivelCtrl', function($scope, $element){
+    $scope.mostrar = false;
+
+    $scope.toggle = function() {
+      $scope.mostrar = !$scope.mostrar;
+    };         
+  })
+  .directive('textoExpandivel', function() {
+    return {
+      controller:'TextoExpandivelCtrl'
+    };
+  });
+            </code></pre>
+            <a target="blank" href="http://jsbin.com/yukamo/edit">http://jsbin.com/yukamo</a>
+          </section>
+
+          <section>
             <p>controllerAs</p>
             <pre><code class="code-size-80">
 angular.module('myApp', [])
