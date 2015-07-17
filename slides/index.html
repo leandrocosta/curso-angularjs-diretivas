@@ -80,7 +80,7 @@
           <h2>What are Directives?</h2>
           <blockquote cite="https://docs.angularjs.org/guide/directive">
             At a high level, directives are <strong>markers</strong> on a DOM element (such as an attribute, element name, comment or CSS class)
-            that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element or even transform
+            that tell AngularJS's HTML compiler ($compile) to attach a specified <strong>behavior</strong> to that DOM element or even <strong>transform</strong>
             the DOM element and its children.
           </blockquote>
           <p class="smalltext">
@@ -1214,6 +1214,30 @@ angular.module('myApp', [])
             </code></pre>
             <a target="blank" href="http://jsbin.com/zefojo/edit">http://jsbin.com/zefojo</a>
           </section>
+          
+          <section>
+            <!--<div style="float:left;">-->
+            <div>
+              <p><a target="blank" href="http://stackoverflow.com/a/28075352">AngularJS standard directive priority list</a></p>
+              <pre>
+Directive           Priority    
+---------------     --------
+ng-switch           1200    
+ng-repeat           1000    
+ng-if               600 
+ng-controller       500 
+ng-include          400 
+ng-checked          100 
+ng-disabled         100 
+ng-href             99  
+ng-src              99  
+ng-model            1   
+ng-app              0
+...
+              </pre>
+            </div>
+            <a target="blank" href="http://stackoverflow.com/a/28075352"><p class="smalltext">Shripal Soni at Stack Overflow</p></a>
+          </section>
         </section>
         
         <section>
@@ -1352,6 +1376,7 @@ angular.module('myApp', [])
             <li>Conteúdo de cada item da lista de deputados;</li>
             <li>Conteúdo da tela de detalhes do deputado.</li>
           </ul>
+          <p>Criar tela de favoritos, fazer reuso das diretivas.</p>
 
           <!--
           <p>2. Criar funcionalidade <i>favoritos</i></p>
